@@ -45,4 +45,16 @@ public class Data
 
       return max;
    }
+   public static double min(Measurable[] objects) {
+	   if(objects.length == 0) {
+		   return 0;
+	   }
+	   double min = objects[0].getMeasure();
+	   for(Measurable obj : objects) {
+		   if(obj.getMeasure() < min) {
+			   min = obj.getMeasure();
+		   }
+	   }
+	   return min;
+   }
 }

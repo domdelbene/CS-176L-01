@@ -1,11 +1,15 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.util.Scanner;
 /**
    This program demonstrates the measurable Country class.
 */
-public class MeasurableTester
-{
-   public static void main(String[] args)
-   {
-     
+public class MeasurableTester { 
+
+   public static void main(String[] args) {
 	  //Countries
 	  System.out.println("Countries Data");
 	  Measurable[] countries = new Measurable[3];
@@ -52,6 +56,84 @@ public class MeasurableTester
       System.out.println("Maximum score: " + maxData);
       System.out.println("Expected: 95");
       System.out.println("");
-
+      
+      //Buttons
+      Scanner scnr = new Scanner(System.in);
+	    System.out.print("Enter metric to use, 1 for maximum, 2 for minimum, 3 for average: ");
+	      int metric = scnr.nextInt();
+	      if(metric == 1) { //Maximum
+	    	  JFrame frame = new JFrame();
+	    	  JPanel panel = new JPanel();
+	    	  JButton max1 = new JButton("Get Maximum Balance");
+	    	  JButton max2 = new JButton("Get Maximum Area");
+	    	  JButton max3 = new JButton("Get Maximum Score");
+	    	  
+	    	  panel.add(max1); //BankAccount
+	    	  panel.add(max2); //Country
+	    	  panel.add(max3); //Quiz
+	    	  
+	    	  frame.add(panel);
+	    	  
+	    	  ActionListener listenerMaxBank = new MeasurableListener(bank, 3, 1, 1);
+	          max1.addActionListener(listenerMaxBank);
+	          ActionListener listenerMaxCountry = new MeasurableListener(countries, 3, 1, 2);
+	          max2.addActionListener(listenerMaxCountry);
+	          ActionListener listenerMaxQuiz = new MeasurableListener(quiz, 5, 1, 3);
+	          max3.addActionListener(listenerMaxQuiz);
+	          
+	          frame.setSize(250, 150);
+	          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	          frame.setVisible(true);
+	      }
+	      else if(metric == 2) { //Minimum
+	    	  JFrame frame = new JFrame();
+	    	  JPanel panel = new JPanel();
+	    	  JButton min1 = new JButton("Get Minimum Balance");
+	    	  JButton min2 = new JButton("Get Minimum Area");
+	    	  JButton min3 = new JButton("Get Minimum Score");
+	    	  
+	    	  panel.add(min1); //BankAccount
+	    	  panel.add(min2); //Country
+	    	  panel.add(min3); //Quiz
+	    	  
+	    	  frame.add(panel);
+	    	  
+	    	  ActionListener listenerMinBank = new MeasurableListener(bank, 3, 2, 1);
+	          min1.addActionListener(listenerMinBank);
+	          ActionListener listenerMinCountry = new MeasurableListener(countries, 3, 2, 2);
+	          min2.addActionListener(listenerMinCountry);
+	          ActionListener listenerMinQuiz = new MeasurableListener(quiz, 5, 2, 3);
+	          min3.addActionListener(listenerMinQuiz);
+	          
+	          frame.setSize(250, 150);
+	          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	          frame.setVisible(true);
+	      }
+	      else { //Average
+	    	  JFrame frame = new JFrame();
+	    	  JPanel panel = new JPanel();
+	    	  JButton avg1 = new JButton("Get Average Balance");
+	    	  JButton avg2 = new JButton("Get Average Area");
+	    	  JButton avg3 = new JButton("Get Average Score");
+	    	  
+	    	  panel.add(avg1); //BankAccount
+	    	  panel.add(avg2); //Country
+	    	  panel.add(avg3); //Quiz
+	    	  
+	    	  frame.add(panel);
+	    	  
+	    	  ActionListener listenerAvgBank = new MeasurableListener(bank, 3, 3, 1);
+	    	  avg1.addActionListener(listenerAvgBank);
+	          ActionListener listenerAvgCountry = new MeasurableListener(countries, 3, 3, 2);
+	          avg2.addActionListener(listenerAvgCountry);
+	          ActionListener listenerAvgQuiz = new MeasurableListener(quiz, 5, 3, 3);
+	          avg3.addActionListener(listenerAvgQuiz);
+	          
+	          frame.setSize(250, 150);
+	          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	          frame.setVisible(true);
+	      }
+      
    }
+   
 }
